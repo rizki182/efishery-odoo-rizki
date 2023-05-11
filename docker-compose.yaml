@@ -10,7 +10,7 @@ services:
       PASSWORD: odoo
     volumes:
       - ./volumes/data/web:/var/lib/odoo
-      - ./odoo_custom_api:/mnt/extra-addons
+      - ./odoo_custom_api:/mnt/extra-addons/custom_api
     ports:
       - "8069:8069"
 
