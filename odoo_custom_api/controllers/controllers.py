@@ -85,31 +85,27 @@ class CustomApi(http.Controller):
 
         return Response(json.dumps(response, indent=4, default=str), headers=headers)
 
-    @http.route("/custom_api/sales_order/create", methods=["GET"], auth="api_key")
+    @http.route("/custom_api/sales_order", type = "json", methods=["POST"], auth="api_key")
     def create(self, **kw):
-        headers = {"Content-Type": "application/json"}
-        
         # insert sale order
         sale_order_value = {
-            "partner_id": 11,
-            "date_order": "2023-05-11 11:42:56"
+            "partner_id": kw["partner_id"],
+            "date_order": kw["date_order"]
         }
         sale_order = http.request.env["sale.order"].create(sale_order_value)
         sale_order = sale_order.read()[0]
         
         # insert sale order line
-        sale_order_line_values = [{
-            "order_id": sale_order["id"],
-            "product_id": 3,
-            "product_uom_qty": 1
-        }, {
-            "order_id": sale_order["id"],
-            "product_id": 4,
-            "product_uom_qty": 2
-        }]
+        sale_order_line_values = []
+        for order_line_param in kw["order_line"]:
+            sale_order_line_values.append({
+                "order_id": sale_order["id"],
+                "product_id": order_line_param["product_id"],
+                "product_uom_qty": order_line_param["product_uom_qty"]
+            })
         sale_order_line = http.request.env["sale.order.line"].create(sale_order_line_values)
 
-        return Response(json.dumps({ "message": "success" }, indent=4, default=str), headers=headers)
+        return { "message": "success" }
 
     @http.route("/custom_api/sales_order/update", methods=["GET"], auth="api_key")
     def update(self, **kw):
