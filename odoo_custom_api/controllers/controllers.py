@@ -9,9 +9,28 @@ class CustomApi(http.Controller):
     def index(self, **kw):
         headers = {"Content-Type": "application/json"}
 
+        response = []
         # get sale order list
-        data = http.request.env["sale.order"].search_read([], ["name", "date_order", "partner_id", "user_id", "amount_total", "state"])
-        return Response(json.dumps(data, indent=4, default=str), headers=headers)
+        sale_orders = http.request.env["sale.order"].search_read([], ["name", "date_order", "partner_id", "user_id", "amount_total", "state"])
+
+        for sale_order in sale_orders:
+            response.append({
+                "id": sale_order["id"],
+                "name": sale_order["name"],
+                "date_order": sale_order["date_order"],
+                "partner": {
+                    "id": sale_order["partner_id"][0],
+                    "name": sale_order["partner_id"][1]
+                },
+                "user": {
+                    "id": sale_order["user_id"][0],
+                    "name": sale_order["user_id"][1]
+                },
+                "amount_total": sale_order["amount_total"],
+                "state": sale_order["state"]
+            })
+            
+        return Response(json.dumps(response, indent=4, default=str), headers=headers)
 
     @http.route("/custom_api/sales_order/detail", methods=["GET"], auth="api_key")
     def detail(self, **kw):
