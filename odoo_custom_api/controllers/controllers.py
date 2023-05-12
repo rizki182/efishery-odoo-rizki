@@ -5,7 +5,7 @@ import json
 
 
 class CustomApi(http.Controller):
-    @http.route("/custom_api/sales_order", methods=["GET"], auth="user")
+    @http.route("/custom_api/sales_order", methods=["GET"], auth="api_key")
     def index(self, **kw):
         headers = {"Content-Type": "application/json"}
 
@@ -13,7 +13,7 @@ class CustomApi(http.Controller):
         data = http.request.env["sale.order"].search_read([], ["name", "date_order", "partner_id", "user_id", "amount_total", "state"])
         return Response(json.dumps(data, indent=4, default=str), headers=headers)
 
-    @http.route("/custom_api/sales_order/detail", methods=["GET"], auth="user")
+    @http.route("/custom_api/sales_order/detail", methods=["GET"], auth="api_key")
     def detail(self, **kw):
         headers = {"Content-Type": "application/json"}
 
@@ -28,7 +28,7 @@ class CustomApi(http.Controller):
 
         return Response(json.dumps(sale_orders[0], indent=4, default=str), headers=headers)
 
-    @http.route("/custom_api/sales_order/create", methods=["GET"], auth="user")
+    @http.route("/custom_api/sales_order/create", methods=["GET"], auth="api_key")
     def create(self, **kw):
         headers = {"Content-Type": "application/json"}
         
@@ -54,7 +54,7 @@ class CustomApi(http.Controller):
 
         return Response(json.dumps({ "message": "success" }, indent=4, default=str), headers=headers)
 
-    @http.route("/custom_api/sales_order/update", methods=["GET"], auth="user")
+    @http.route("/custom_api/sales_order/update", methods=["GET"], auth="api_key")
     def update(self, **kw):
         headers = {"Content-Type": "application/json"}
         
