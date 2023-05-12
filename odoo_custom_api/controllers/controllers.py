@@ -35,7 +35,7 @@ class CustomApi(http.Controller):
 
         return Response(json.dumps(response, indent=4, default=str), headers=headers)
 
-    @http.route("/custom_api/sales_order", methods=["GET"], auth="api_key")
+    @http.route("/custom_api/sales_order/detail", methods=["GET"], auth="api_key")
     def detail(self, **kw):
         headers = {"Content-Type": "application/json"}
 
