@@ -35,7 +35,7 @@ class CustomApi(http.Controller):
 
         return Response(json.dumps(response, indent=4, default=str), headers=headers)
 
-    @http.route("/custom_api/sales_order/detail", methods=["GET"], auth="api_key")
+    @http.route("/custom_api/sales_order", methods=["GET"], auth="api_key")
     def detail(self, **kw):
         headers = {"Content-Type": "application/json"}
 
@@ -43,13 +43,10 @@ class CustomApi(http.Controller):
         response = {}
 
         # get sale order
-        sale_orders = http.request.env["sale.order"].search_read([], ["name", "date_order", "partner_id", "user_id", "order_line", "amount_total", "state"])
+        sale_orders = http.request.env["sale.order"].search_read([("id", "=", kw["id"])], ["name", "date_order", "partner_id", "user_id", "order_line", "amount_total", "state"])
 
         # get sale order line
         sale_order_lines = http.request.env["sale.order.line"].search_read([("id", "in", sale_orders[0]["order_line"])], ["product_id", "product_uom_qty", "product_uom", "price_unit", "price_subtotal"])
-
-        # # merge sale order line detail into sale order
-        # sale_orders[0]["order_line"] = sale_order_lines
 
         # reformat sale order response
         response = {
