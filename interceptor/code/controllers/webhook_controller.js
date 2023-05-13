@@ -3,7 +3,7 @@ const webhook_model = require("../models/webhook");
 module.exports = {
     async update(req, res){
         try{
-            let data = await webhook_model.index(req.body);
+            let data = await webhook_model.update(req.body);
             res.status(200).json(data);
         } catch (err) {
             console.warn(err);
