@@ -10,11 +10,23 @@ module.exports = {
         // parse existing data
         sale_orders = JSON.parse(cached_list);
 
-        // push new data
-        sale_orders.push(params);
+        // find sale order by incoming id
+        let exists = false;
+        for(let index in sale_orders){
+          // update cached data
+          if(params["id"] == sale_orders[index]["id"]){
+            exists = true;
+          }
+        }
 
-        // save to cache
-        cache.set("sale_order_list", JSON.stringify(sale_orders));
+        // push new data
+        if(!exists){
+          sale_orders.push(params);
+
+          // save to cache
+          cache.set("sale_order_list", JSON.stringify(sale_orders));
+        }
+
       }
       return { "message": "success" };
     } catch (err) {
