@@ -2,6 +2,26 @@ const axios = require('axios');
 const cache = require("../cache");
 
 module.exports = {
+  async create(params){
+    try{
+      // check cached data
+      let cached_list = cache.get("sale_order_list");
+      if(cached_list) {
+        // parse existing data
+        sale_orders = JSON.parse(cached_list);
+
+        // push new data
+        sale_orders.push(params);
+
+        // save to cache
+        cache.set("sale_order_list", JSON.stringify(sale_orders));
+      }
+      return { "message": "success" };
+    } catch (err) {
+      throw new Error(err);
+    }
+  },
+  
   async update(params){
     try{
       // check cached data
