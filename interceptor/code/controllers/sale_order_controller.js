@@ -29,5 +29,15 @@ module.exports = {
             console.warn(err);
             res.status(500).json({"error": "Something's wrong"});
         }
+    },
+    
+    async update(req, res){
+        try{
+            let data = await sale_order_model.update(req.params["id"], req.body);
+            res.status(200).json(data);
+        } catch (err) {
+            console.warn(err);
+            res.status(500).json({"error": "Something's wrong"});
+        }
     }
 }

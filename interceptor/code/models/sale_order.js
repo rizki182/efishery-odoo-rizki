@@ -47,5 +47,25 @@ module.exports = {
     } catch (err) {
       throw new Error(err);
     }
+  },
+
+  async update(id, params){
+    try{
+      params["id"] = parseInt(id);
+      console.log(params)
+      // fetch data from API
+      const response = await axios.put('http://web:8069/custom_api/sales_order',
+      {
+        "params": params
+      },
+      {
+        headers: {
+          "API-KEY": "25b2b4378ad81a58b422247da757eedebcd15252"
+        }
+      });
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 }
