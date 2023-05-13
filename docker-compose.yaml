@@ -13,6 +13,7 @@ services:
       - ./volumes/data/web:/var/lib/odoo
       - ./odoo_custom_api:/mnt/extra-addons/custom_api
       - ./auth_api_key:/mnt/extra-addons/auth_api_key
+      - ./base_automation_webhook:/mnt/extra-addons/base_automation_webhook
     ports:
       - "8069:8069"
 
