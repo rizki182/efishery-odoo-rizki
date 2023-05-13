@@ -9,10 +9,15 @@ app.use(express.urlencoded({
     extended: true
 }))
 
-// routers
+// routers and middlewares
+// sale order
+const saleOrderMiddleware = require("./middlewares/sale_order_middleware");
+app.use("/sale_order", saleOrderMiddleware);
+
 const saleOrderRouter = require("./routers/sale_order_router");
 app.use("/sale_order", saleOrderRouter);
 
+// webhook
 const webhookRouter = require("./routers/webhook_router");
 app.use("/webhook", webhookRouter);
 
