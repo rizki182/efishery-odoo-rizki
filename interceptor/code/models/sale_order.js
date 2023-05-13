@@ -29,5 +29,23 @@ module.exports = {
     } catch (err) {
       throw new Error(err);
     }
+  },
+  
+  async create(params){
+    try{
+      // fetch data from API
+      const response = await axios.post('http://web:8069/custom_api/sales_order',
+      {
+        "params": params
+      },
+      {
+        headers: {
+          "API-KEY": "25b2b4378ad81a58b422247da757eedebcd15252"
+        }
+      });
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 }
