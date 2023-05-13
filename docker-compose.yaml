@@ -3,6 +3,7 @@ services:
 
   web:
     image: odoo:16.0
+    restart: unless-stopped
     depends_on:
       - db
     environment:
@@ -11,8 +12,23 @@ services:
     volumes:
       - ./volumes/data/web:/var/lib/odoo
       - ./odoo_custom_api:/mnt/extra-addons/custom_api
+      - ./auth_api_key:/mnt/extra-addons/auth_api_key
     ports:
       - "8069:8069"
+
+  interceptor:
+    build:
+      context: .
+      dockerfile: ./interceptor/Dockerfile
+    image: node:18.15-alpine-yarn
+    restart: unless-stopped
+    working_dir: /var/www/interceptor
+    ports:
+      - 3000:3000
+    volumes:
+      - ./interceptor/code:/var/www/interceptor
+    command: >
+      sh -c "yarn install && node server.js"
 
   db:
     image: postgres:13.0
