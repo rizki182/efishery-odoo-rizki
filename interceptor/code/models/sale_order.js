@@ -1,3 +1,4 @@
+require('dotenv').config();
 const axios = require('axios');
 const cache = require("../cache");
 
@@ -11,9 +12,9 @@ module.exports = {
       let cached_list = cache.get("sale_order_list");
       if ( cached_list == undefined ){
         // fetch data from odoo if cache is empty
-        const res = await axios.get('http://web:8069/custom_api/sales_order',{
+        const res = await axios.get('http://web:'+process.env.ODOO_PORT+'/custom_api/sales_order',{
           headers: {
-            "API-KEY": "25b2b4378ad81a58b422247da757eedebcd15252"
+            "API-KEY": process.env.ODOO_API_KEY
           }
         });
 
@@ -39,9 +40,9 @@ module.exports = {
   async detail(id){
     try{
       // fetch data from API
-      const response = await axios.get('http://web:8069/custom_api/sales_order/detail?id='+id,{
+      const response = await axios.get('http://web:'+process.env.ODOO_PORT+'/custom_api/sales_order/detail?id='+id,{
         headers: {
-          "API-KEY": "25b2b4378ad81a58b422247da757eedebcd15252"
+          "API-KEY": process.env.ODOO_API_KEY
         }
       });
       return response.data;
@@ -53,13 +54,13 @@ module.exports = {
   async create(params){
     try{
       // fetch data from API
-      const response = await axios.post('http://web:8069/custom_api/sales_order',
+      const response = await axios.post('http://web:'+process.env.ODOO_PORT+'/custom_api/sales_order',
       {
         "params": params
       },
       {
         headers: {
-          "API-KEY": "25b2b4378ad81a58b422247da757eedebcd15252"
+          "API-KEY": process.env.ODOO_API_KEY
         }
       });
       return response.data;
@@ -73,13 +74,13 @@ module.exports = {
       params["id"] = parseInt(id);
       console.log(params)
       // fetch data from API
-      const response = await axios.put('http://web:8069/custom_api/sales_order',
+      const response = await axios.put('http://web:'+process.env.ODOO_PORT+'/custom_api/sales_order',
       {
         "params": params
       },
       {
         headers: {
-          "API-KEY": "25b2b4378ad81a58b422247da757eedebcd15252"
+          "API-KEY": process.env.ODOO_API_KEY
         }
       });
       return response.data;
