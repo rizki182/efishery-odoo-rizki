@@ -18,6 +18,9 @@ const saleOrderRouter = require("./routers/sale_order_router");
 app.use("/sale_order", saleOrderRouter);
 
 // webhook
+const webhookMiddleware = require("./middlewares/webhook_middleware");
+app.use("/webhook", webhookMiddleware);
+
 const webhookRouter = require("./routers/webhook_router");
 app.use("/webhook", webhookRouter);
 
