@@ -15,7 +15,7 @@ services:
       - ./auth_api_key:/mnt/extra-addons/auth_api_key
       - ./base_automation_webhook:/mnt/extra-addons/base_automation_webhook
     ports:
-      - "8069:8069"
+      - "${ODOO_PORT}:8069"
 
   interceptor:
     build:
@@ -25,7 +25,7 @@ services:
     restart: unless-stopped
     working_dir: /var/www/interceptor
     ports:
-      - 3000:3000
+      - ${INTERCEPTOR_PORT}:3000
     volumes:
       - ./interceptor/code:/var/www/interceptor
     command: >
