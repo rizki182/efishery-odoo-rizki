@@ -1,3 +1,7 @@
+## Notes
+
+Ada masalah saat mengganti port odoo akses jadi tidak bisa akses lewat API jadi odoo harus tetap di port 8069
+
 ## Deployment
 **Clone repository**
 
@@ -28,6 +32,11 @@ docker logs -f efishery-odoo-rizki-web-1
 docker logs -f efishery-odoo-rizki-interceptor-1
 docker logs -f efishery-odoo-rizki-db-1
 ```
+
+## Postman
+
+Untuk mencoba API odoo dan interceptor bisa import **postman_collection.json** ke aplikasi postman
+
 ## Configurations
 Berikut file untuk mengubah beberapa konfigurasi aplikasi
 ```sh
