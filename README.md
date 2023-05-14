@@ -26,7 +26,7 @@ Setelah proses deploy selesai tunggu beberapa saat karena masing - masing contai
 ```sh
 docker logs -f efishery-odoo-rizki-web-1
 docker logs -f efishery-odoo-rizki-interceptor-1
-docker logs -f efishery-odoo-rizki2-db-1
+docker logs -f efishery-odoo-rizki-db-1
 ```
 
 ## Troubleshoot
