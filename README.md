@@ -1,4 +1,4 @@
-## Deploy
+## Deployment
 **Clone repository**
 
 ```sh
@@ -27,6 +27,36 @@ Setelah proses deploy selesai tunggu beberapa saat karena masing - masing contai
 docker logs -f efishery-odoo-rizki-web-1
 docker logs -f efishery-odoo-rizki-interceptor-1
 docker logs -f efishery-odoo-rizki-db-1
+```
+## Configurations
+Berikut file untuk mengubah beberapa konfigurasi aplikasi
+```sh
+.env -> konfigurasi port yang digunakan
+  - ODOO_PORT -> port yang dipakai untuk aplikasi web odoo
+  - INTERCEPTOR_PORT -> port yang dipakai untuk API interceptor
+
+interceptor/code/.env -> konfigurasi integrasi antara interceptor dan odoo
+  - ODOO_PORT -> port yang diakses interceptor untuk integrasi dengan odoo
+  - ODOO_API_KEY -> key yang digunakan interceptor untuk autentikasi odoo
+  - API_KEY - > key yang digunakan odoo untuk mengakses webhook endpoint dari interceptor
+```
+
+Untuk mengubah/menambah API key yang digunakan untuk autentikasi odoo, lakukan langkah berikut untuk mengakses menu Auth Api Key
+```sh
+Aktifkan developer mode terlebih dahulu
+Menu -> Setting -> Scroll ke bagian Developer Tools -> Activate the developer mode
+
+Lalu akses menu API key di
+Menu -> Setting -> Technical -> Auth Api Key
+```
+
+Untuk mengubah/menambah script akses ke interceptor webhook, lakukan langkah berikut untuk mengakses menu Automation
+```sh
+Aktifkan developer mode terlebih dahulu
+Menu -> Setting -> Scroll ke bagian Developer Tools -> Activate the developer mode
+
+Lalu akses menu Automation
+Menu -> Setting -> Technical -> Automation
 ```
 
 ## Troubleshoot
