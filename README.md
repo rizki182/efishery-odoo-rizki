@@ -1,6 +1,6 @@
 ## Notes
 
-Ada masalah saat mengganti port odoo akses jadi tidak bisa akses lewat API jadi odoo harus tetap di port 8069
+Ada masalah saat mengganti port odoo jadi tidak bisa diakses lewat API, jadi odoo harus tetap di port 8069
 
 ## Deployment
 **Clone repository**
