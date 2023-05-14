@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "dc70aa00-bc71-4642-beea-b85a80499509",
+		"name": "efishery-odoo-rizki",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "odoo",
+			"item": [
+				{
+					"name": "/custom_api/sales_order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "25b2b4378ad81a58b422247da757eedebcd15252",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8069/custom_api/sales_order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8069",
+							"path": [
+								"custom_api",
+								"sales_order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/custom_api/sales_order/detail?id=20",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "25b2b4378ad81a58b422247da757eedebcd15252",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8069/custom_api/sales_order/detail?id=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8069",
+							"path": [
+								"custom_api",
+								"sales_order",
+								"detail"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/custom_api/sales_order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "25b2b4378ad81a58b422247da757eedebcd15252",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"params\":{\n        \"partner_id\": 11,\n        \"date_order\": \"2023-05-11 11:42:56\",\n        \"order_line\": [\n            {\n                \"product_id\": 1,\n                \"product_uom_qty\": 3\n            },\n            {\n                \"product_id\": 2,\n                \"product_uom_qty\": 2\n            },\n            {\n                \"product_id\": 3,\n                \"product_uom_qty\": 1\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8069/custom_api/sales_order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8069",
+							"path": [
+								"custom_api",
+								"sales_order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/custom_api/sales_order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "25b2b4378ad81a58b422247da757eedebcd15252",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"params\":{\n        \"id\": 25,\n        \"partner_id\": 11,\n        \"date_order\": \"2023-05-11 11:42:56\",\n        \"order_line\": [\n            {\n                \"product_id\": 2,\n                \"product_uom_qty\": 2\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8069/custom_api/sales_order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8069",
+							"path": [
+								"custom_api",
+								"sales_order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "interceptor",
+			"item": [
+				{
+					"name": "/sale_order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "78sdfrt312d1s45sd56s7896sdd58sgtr5899856s",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/sale_order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sale_order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/sale_order/16",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "78sdfrt312d1s45sd56s7896sdd58sgtr5899856s",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/sale_order/16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sale_order",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/sale_order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "78sdfrt312d1s45sd56s7896sdd58sgtr5899856s",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"partner_id\": 11,\n    \"date_order\": \"2023-05-11 11:42:56\",\n    \"order_line\": [\n        {\n            \"product_id\": 1,\n            \"product_uom_qty\": 3\n        },\n        {\n            \"product_id\": 2,\n            \"product_uom_qty\": 4\n        },\n        {\n            \"product_id\": 3,\n            \"product_uom_qty\": 5\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/sale_order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sale_order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/sale_order/22",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "78sdfrt312d1s45sd56s7896sdd58sgtr5899856s",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"partner_id\": 10,\n    \"date_order\": \"2023-05-11 11:42:56\",\n    \"order_line\": [\n        {\n            \"product_id\": 2,\n            \"product_uom_qty\": 5\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/sale_order/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sale_order",
+								"22"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
